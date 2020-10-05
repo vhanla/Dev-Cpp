@@ -325,6 +325,7 @@ type
     fUseSyn: boolean; // use syntax highlighting
     fSynExt: String; // semi-colon seperated list of highlight ext's
     fFont: TFont; // Editor Font
+    fUseLigatures: boolean; // use font ligatures if font has them
     fGutterFont: TFont; // Gutter font
     fInsertCaret: integer; // Editor insert caret
     fOverwriteCaret: integer; // Editor overwrite caret
@@ -417,6 +418,7 @@ type
     property OverwriteCaret: integer read fOverwriteCaret write fOverwriteCaret;
     property InsDropFiles: boolean read fInsDropFiles write fInsDropFiles;
     property Font: TFont read fFont write fFont;
+    property FontLigatures: boolean read fUseLigatures write fUseLigatures;
 
     // Gutter options
     property GutterVis: boolean read fShowGutter write fShowGutter;
@@ -2439,6 +2441,12 @@ begin
         eoDragDropEditing, eoDropFiles, eoKeepCaretX, eoTabsToSpaces,
         eoRightMouseMovesCursor, eoScrollByOneLess, eoAutoSizeMaxScrollWidth
         ];
+
+      // Enable or disable font ligatures support
+      if fUseLigatures then
+        Options := Options + [eoShowLigatures]
+      else
+        Options := Options - [eoShowLigatures];
 
       // Optional synedit options in devData
       if fAutoIndent then

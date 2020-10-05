@@ -20,7 +20,6 @@
 program devcpp;
 {$R 'icons.res' 'icons.rc'}
 {$R 'DefaultFiles.res' 'DefaultFiles.rc'}
-{%File 'LangIDs.inc'}
 
 uses
   FastMM4 in 'FastMM4.pas',
@@ -87,7 +86,9 @@ uses
   PackmanExitCodesU in 'Tools\Packman\PackmanExitCodesU.pas',
   ImageTheme in 'ImageTheme.pas',
   Instances in 'Instances.pas',
-  CharUtils in 'CharUtils.pas';
+  CharUtils in 'CharUtils.pas',
+  Vcl.Themes,
+  Vcl.Styles;
 
 {$R *.res}
 
@@ -146,6 +147,7 @@ begin
 
   // Create main window
   Application.Initialize;
+  TStyleManager.TrySetStyle('TabletDark');
   Application.Title := 'Embarcadero Dev C++';
   Application.CreateForm(TMainForm, MainForm);
   Application.Run;

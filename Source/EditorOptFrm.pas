@@ -154,6 +154,7 @@ type
     cbDeleteCompleted: TCheckBox;
     cbSingleQuotes: TCheckBox;
     cbDoubleQuotes: TCheckBox;
+    cbUseFontLigatures: TCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure SetGutter;
     procedure ElementListClick(Sender: TObject);
@@ -684,6 +685,7 @@ begin
 
     Font.Name := cboEditorFont.Text;
     Font.Size := edEditorSize.Value;
+    FontLigatures := cbUseFontLigatures.Checked;
 
     Gutterfont.Name := cboGutterFont.Text;
     GutterFont.Size := edGutterSize.Value;
