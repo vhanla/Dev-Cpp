@@ -171,7 +171,9 @@ type
     eoSpecialLineDefaultFg,    //disables the foreground text color override when using the OnSpecialLineColor event
     eoTabIndent,               //When active <Tab> and <Shift><Tab> act as block indent, unindent when text is selected
     eoTabsToSpaces,            //Converts a tab character to a specified number of space characters
-    eoTrimTrailingSpaces       //Spaces at the end of lines will be trimmed and not saved
+    eoTrimTrailingSpaces,      //Spaces at the end of lines will be trimmed and not saved
+    eoShowLigatures            //Shows font ligatures, by default it is disabled
+
     );
 
   TSynEditorOptions = set of TSynEditorOption;
@@ -2951,7 +2953,7 @@ var
       end;
 
       fTextDrawer.ExtTextOut(nX, rcToken.Top, ETOOptions, rcToken,
-        PWideChar(Text), nCharsToPaint);
+        PWideChar(Text), nCharsToPaint, (eoShowLigatures in fOptions));
 
       if DoTabPainting then
       begin
